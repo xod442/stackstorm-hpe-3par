@@ -1,0 +1,6 @@
+---
+ipaddress: "10.132.0.40"
+username: "apiaccess"
+password: "siesta3"
+dbuser: "appUser"
+dbpass: 'passwordForAppUser'

@@ -1,0 +1,12 @@
+---
+ref: hpe3par
+name: hpe3par
+description: HPE 3Par Integration Pack
+keywords:
+  - HPE 3Par
+  - Alletra
+version: 0.1.0
+python_versions:
+  - "3"
+author: Rick Kauffman
+email: rick.a.kauffman@hpe.com
