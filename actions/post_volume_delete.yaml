@@ -1,0 +1,13 @@
+---
+name: post_volume_delete
+pack: hpe3par
+description: Delete a volume on the storage array
+runner_type: python-script
+entry_point: post_volume_delete.py
+enabled: true
+parameters:
+  name:
+    type: "string"
+    description: "The vlan group name"
+    required: true
+    position: 0

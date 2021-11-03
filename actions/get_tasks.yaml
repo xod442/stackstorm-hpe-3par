@@ -1,0 +1,7 @@
+---
+name: get_tasks
+pack: hpe3par
+description: Get an array of all tasks from the HPE 3Par / Alletra storage array
+runner_type: python-script
+entry_point: get_tasks.py
+enabled: true

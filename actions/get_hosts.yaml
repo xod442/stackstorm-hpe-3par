@@ -1,0 +1,7 @@
+---
+name: get_hosts
+pack: hpe3par
+description: Get host information from the storage array
+runner_type: python-script
+entry_point: get_hosts.py
+enabled: true

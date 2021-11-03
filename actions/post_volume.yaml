@@ -1,0 +1,23 @@
+---
+name: post_volume
+pack: hpe3par
+description: Post a volume to the storage array
+runner_type: python-script
+entry_point: post_volume.py
+enabled: true
+parameters:
+  name:
+    type: "string"
+    description: "The volume name"
+    required: true
+    position: 1
+  cpg:
+    type: "string"
+    description: "CPG string"
+    required: true
+    position: 2
+  size:
+    type: "integer"
+    description: "Size"
+    required: true
+    position: 3

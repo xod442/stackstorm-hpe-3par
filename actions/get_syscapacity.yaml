@@ -1,0 +1,7 @@
+---
+name: get_storageinfo
+pack: hpe3par
+description: Get information of the storage array
+runner_type: python-script
+entry_point: get_storageinfo.py
+enabled: true

@@ -1,0 +1,7 @@
+---
+name: get_wsapiinfo
+pack: hpe3par
+description: Get overall system of the storage array
+runner_type: python-script
+entry_point: get_wsapiinfo.py
+enabled: true
