@@ -1,0 +1,6 @@
+---
+name: get-hpe-3par-volumes
+description: A workflow for getting hpe 3par volumes into a mongo database.
+runner_type: orquesta
+entry_point: workflows/get-hpe-3par-volumes.yaml
+enabled: true

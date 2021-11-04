@@ -1,0 +1,15 @@
+version: 1.0
+
+description: A workflow to copy hpe 3par volumes into a mongo database.
+
+tasks:
+  getalarms:
+    action: hpe3par.get_volumes
+    next:
+      - when: <% succeeded() %>
+        publish:
+          - volumes: <% result().result %>
+        do: sendmongo
+
+  sendmongo:
+    action: hpe3par.load-hpe-3par-volumes volumes=<% ctx().volumes %>

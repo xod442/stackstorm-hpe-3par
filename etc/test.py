@@ -32,11 +32,16 @@ cl.login("apiaccess", "siesta3")
 
 #cl.createVolume(testVolName, testCPGName, 2048, "foo")
 
-cpgs = cl.getCPGs()
+info = cl.getVolumes()
 #wsapi_version = cl.getWsApiVersion()
 #tasks = cl.getAllTasks()
 
-print(cpgs)
+info = info['members']
+
+for i in info:
+    print(i['uuid'])
+
+print(info)
 
 """
 # Get the arrays

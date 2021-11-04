@@ -1,0 +1,11 @@
+---
+name: load-hpe-3par-volumes
+pack: hpe3par
+description: build mongo db of real time volumes on 3par
+runner_type: python-script
+entry_point: load-hpe-3par-volumes.py
+enabled: true
+parameters:
+  volumes:
+    required: true
+    type: array
