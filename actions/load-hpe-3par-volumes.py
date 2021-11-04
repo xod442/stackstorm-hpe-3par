@@ -33,7 +33,7 @@ class loadDb(MongoBaseAction):
         new_volume={}
 
         for vol in volumes:
-            myquery = { "u_id" : vol['uud'] }
+            myquery = { "u_id" : vol['uuid'] }
             records = known.find(myquery).count()
             if records == 0:
                 vol['u_process']='no'
