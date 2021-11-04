@@ -27,8 +27,7 @@ from lib.actions import MongoBaseAction
 class loadDb(MongoBaseAction):
     def run(self, volumes):
 
-        # mydb = self.dbclient["app_db"]
-        mydb = ["app_db"]
+        mydb = self.dbclient["app_db"]
         known = mydb["3parvols"]
 
         new_volume={}
