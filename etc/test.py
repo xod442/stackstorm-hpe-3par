@@ -11,16 +11,15 @@ cmd_folder = os.path.realpath(os.path.abspath("..") )
 if cmd_folder not in sys.path:
      sys.path.insert(0, cmd_folder)
 
-requests.packages.urllib3.disable_warnings()
+# requests.packages.urllib3.disable_warnings()
 
 from hpe3parclient import client, exceptions
 # from utils import *
 
-username = "apiaccess"
-password = "siesta3"
+
 
 name = "API-TEST-VOLUME-X"
-#testSNAPName = testVolName+"SNAP"
+#testSNAPName = ttestVolName+"SNAP"
 cpgName = "SSD_r1"
 size = 1000
 
@@ -32,18 +31,46 @@ cl.login("apiaccess", "siesta3")
 
 #cl.createVolume(testVolName, testCPGName, 2048, "foo")
 
-info = cl.getVolumes()
+volumes = cl.getVolumes()
 #wsapi_version = cl.getWsApiVersion()
 #tasks = cl.getAllTasks()
 
-info = info['members']
+volumes = volumes['members']
 
+dbuser = "appUser"
+dbpass = 'passwordForAppUser'
+
+dbclient = MongoClient('mongodb://%s:%s@localhost:27017/' % (dbuser,dbpass))
+
+
+mydb = dbclient["app_db"]
+known = mydb["3parvols"]
+
+new_volume={}
+
+for vol in volumes:
+    myquery = { "u_id" : vol['uuid'] }
+    records = known.find(myquery).count()
+    print('--------------------------------------------------')
+    print(myquery)
+    print(records)
+    if records == 0:
+        vol['u_process']='no'
+        write_record = known.insert_one(vol)
+        new_volume={}
+
+    else:
+        records='Fail to write mongo record, possible duplicate'
+        # write_record = process.insert_one(alarm)
+
+
+"""
 for i in info:
     print(i['uuid'])
 
 print(info)
 
-"""
+
 # Get the arrays
 allTasks = cl.createVolume(name, cpgName, size)
 print('--------------------1---------------------------------')

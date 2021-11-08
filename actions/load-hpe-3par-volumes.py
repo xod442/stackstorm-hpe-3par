@@ -28,16 +28,40 @@ class loadDb(MongoBaseAction):
     def run(self, volumes):
 
         mydb = self.dbclient["app_db"]
-        known = mydb["3parvols"]
+        known = mydb["volz3par"]
 
         new_volume={}
 
         for vol in volumes:
-            myquery = { "u_id" : vol['uuid'] }
+            myquery = { "u_uuid" : vol['uuid'] }
             records = known.find(myquery).count()
             if records == 0:
-                vol['u_process']='no'
-                write_record = known.insert_one(vol)
+                new_volume['u_process']='no'
+                new_volume['u_id']=vol['id']
+                new_volume['u_name']=vol['name']
+                new_volume['u_provisioningType']=vol['provisioningType']
+                new_volume['u_copyType']=vol['copyType']
+                new_volume['u_baseId']=vol['baseId']
+                new_volume['u_readOnly']=vol['readOnly']
+                new_volume['u_state']=vol['state']
+                new_volume['u_failedStates']=vol['failedStates']
+                new_volume['u_degradedStates']=vol['degradedStates']
+                new_volume['u_additionalStates']=vol['additionalStates']
+                new_volume['u_adminSpace']=vol['adminSpace']
+                new_volume['u_snapshotSpace']=vol['snapshotSpace']
+                new_volume['u_sizeMiB']=vol['sizeMiB']
+                new_volume['u_wwn']=vol['wwn']
+                new_volume['u_creationTimeSec']=vol['creationTimeSec']
+                new_volume['u_creationTime8601']=vol['creationTime8601']
+                new_volume['u_ssSpcAllocWarningPct']=vol['ssSpcAllocWarningPct']
+                new_volume['u_ssSpcAllocLimitPct']=vol['ssSpcAllocLimitPct']
+                new_volume['u_usrSpcAllocWarningPct']=vol['usrSpcAllocWarningPct']
+                new_volume['u_usrSpcAllocLimitPct']=vol['usrSpcAllocLimitPct']
+                new_volume['u_policies']=vol['policies']
+                new_volume['u_uuid']=vol['uuid']
+                new_volume['u_capacityEfficiency']=vol['capacityEfficiency']
+                new_volume['u_links']=vol['links']
+                write_record = known.insert_one(new_volume)
                 new_volume={}
 
             else:
