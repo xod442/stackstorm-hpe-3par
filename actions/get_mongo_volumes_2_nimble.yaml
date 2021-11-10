@@ -1,0 +1,7 @@
+---
+name: get_mongo_volumes_2_nimble
+pack: hpenimble
+description: Get an non-processed 3par volume entries from mongo database not processed by nimble
+runner_type: python-script
+entry_point: get_mongo_volumes_2_nimble.py
+enabled: true

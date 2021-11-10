@@ -1,0 +1,6 @@
+---
+name: get-mongo-volumes-2-nimble
+description: A workflow for getting hpe 3par volumes from mongo database to nimble.
+runner_type: orquesta
+entry_point: workflows/get-mongo-volumes-2-nimble.yaml
+enabled: true

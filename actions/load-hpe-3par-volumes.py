@@ -36,7 +36,8 @@ class loadDb(MongoBaseAction):
             myquery = { "u_uuid" : vol['uuid'] }
             records = known.find(myquery).count()
             if records == 0:
-                new_volume['u_process']='no'
+                new_volume['u_nimble_process']='no'
+                new_volume['u_snow_process']='no'
                 new_volume['u_id']=vol['id']
                 new_volume['u_name']=vol['name']
                 new_volume['u_provisioningType']=vol['provisioningType']

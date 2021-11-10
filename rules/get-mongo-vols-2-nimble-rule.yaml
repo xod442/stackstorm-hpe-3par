@@ -1,0 +1,13 @@
+---
+name: "get-mongo-vols-2-nimble-rule"
+description: "Get HPE 3par volumes from mongo and send to snow."
+enabled: false
+
+trigger:
+  type: "core.st2.IntervalTimer"
+  parameters:
+    delta: 5
+    unit: minutes
+
+action:
+  ref: "hpe3par.get-mongo-volumes-2-nimble"
