@@ -1,15 +1,22 @@
 version: 1.0
 
-description: A workflow to copy hpe 3par volumes into a nimble array.
+description: A workflow to copy hpe Nimble alarms from mongo and into snow..
 
 tasks:
-  getalarms:
-    action: hpe3par.get_volumes
+  getalerts:
+    action: hpenimble.get_mongo_volumes_2_nimble
     next:
       - when: <% succeeded() %>
         publish:
           - volumes: <% result().result %>
-        do: sendmongo
+        do: nimble
 
-  sendmongo:
-    action: hpe3par.load-hpe-3par-volumes volumes=<% ctx().volumes %>
+  nimble:
+    with: <% ctx().volumes %>
+    action: hpenimble.post_volume payload='<% item() %>'
+    next:
+      - when: <% succeeded() %>
+        do: processnimble
+
+  processnimble:
+    action: hpenimble.process_nimble_volumes volumes=<% ctx().volumesß %>

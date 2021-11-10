@@ -1,0 +1,11 @@
+---
+name: process_nimble_volumes
+pack: hpe3par
+description: Set the process flag in the mongo database for volumes 2 nimble to yes
+runner_type: python-script
+entry_point: process_nimble_volumes.py
+enabled: true
+parameters:
+  volumes:
+    required: true
+    type: array

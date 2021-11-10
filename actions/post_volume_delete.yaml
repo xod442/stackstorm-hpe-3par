@@ -8,6 +8,6 @@ enabled: true
 parameters:
   name:
     type: "string"
-    description: "The vlan group name"
+    description: "The volume name"
     required: true
     position: 0

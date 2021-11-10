@@ -1,15 +1,22 @@
 version: 1.0
 
-description: A workflow to copy hpe 3par volumes into a mongo database.
+description: A workflow to copy hpe Nimble alarms from mongo and into snow..
 
 tasks:
-  getalarms:
-    action: hpe3par.get_volumes
+  getalerts:
+    action: hpenimble.get_mongo_alarms
     next:
       - when: <% succeeded() %>
         publish:
-          - volumes: <% result().result %>
-        do: sendmongo
+          - alarms: <% result().result %>
+        do: snowalerts
 
-  sendmongo:
-    action: hpe3par.load-hpe-3par-volumes volumes=<% ctx().volumes %>
+  snowalerts:
+    with: <% ctx().events %>
+    action: servicenow.create_record table="u_nimble_alarms" payload='<% item() %>'
+    next:
+      - when: <% succeeded() %>
+        do: processevents
+
+  processevents:
+    action: hpenimble.process_alarms alarms=<% ctx().alarms %>
