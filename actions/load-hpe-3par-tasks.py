@@ -25,12 +25,29 @@ from lib.actions import MongoBaseAction
 
 
 class loadDb(MongoBaseAction):
-    def run(self, volumes):
+    def run(self, tasks):
 
         mydb = self.dbclient["app_db"]
-        known = mydb["volz3par"]
+        known = mydb["tasks3par"]
 
-        for v in volumes:
-            known.updateOne({"name":v['name']},{"$set":{"u_nimbel_process":"yes"}})
+        new_task={}
 
-        return ()
+        for t in tasks:
+            myquery = { "u_id" : t['uuid'] }
+            records = known.find(myquery).count()
+            if records == 0:
+                new_task['u_snow_process']='no'
+                new_task['u_id']=t['id']
+                new_task['u_name']=t['name']
+                new_task['u_finishTime']=t['finishTime']
+                new_task['u_startTime']=t['startTime']
+                new_task['u_status']=t['status']
+                new_task['u_type']=t['type']
+                new_task['u_user']=t['user']
+                write_record = known.insert_one(new_task)
+                new_task={}
+
+            else:
+                records='Fail to write mongo record, possible duplicate'
+                # write_record = process.insert_one(alarm)
+        return (records)

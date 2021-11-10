@@ -6,6 +6,6 @@ runner_type: python-script
 entry_point: process_nimble_volumes.py
 enabled: true
 parameters:
-  nimble_volume_list:
+  volumes:
     required: true
     type: array

@@ -1,0 +1,11 @@
+---
+name: process_3par_tasks
+pack: hpe3par
+description: Set the process flag in the mongo database for 3par tasks to yes
+runner_type: python-script
+entry_point: process_3par_tasks.py
+enabled: true
+parameters:
+  nimble_volume_list:
+    required: true
+    type: array

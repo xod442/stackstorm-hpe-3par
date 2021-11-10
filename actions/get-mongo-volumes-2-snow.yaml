@@ -1,6 +1,0 @@
----
-name: get-mongo-volumes-2-snow
-description: A workflow for getting hpe 3par volumes from mongo database to servicenow.
-runner_type: orquesta
-entry_point: workflows/get-mongo-volumes-2-snow.yaml
-enabled: true

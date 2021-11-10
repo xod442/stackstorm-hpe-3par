@@ -25,12 +25,27 @@ from lib.actions import MongoBaseAction
 
 
 class loadDb(MongoBaseAction):
-    def run(self, volumes):
+    def run(self):
 
         mydb = self.dbclient["app_db"]
         known = mydb["volz3par"]
 
-        for v in volumes:
-            known.updateOne({"name":v['name']},{"$set":{"u_nimbel_process":"yes"}})
+        nimble_volume_list = []
 
-        return ()
+        myquery = { "u_nimble_process" : 'no' }
+        records = known.find(myquery)
+
+        limit_iops = 12000
+
+        volume = {}
+
+        for r in records:
+            # TODO add records processing
+            if r['u_name'] != 'admin' and '.srdata':
+            volume['name'] = r['u_name']
+            volume['size'] = r['u_sizeMiB']
+            volume['limit_iops'] = limit_iops
+            nimble_volume_list.append(r)
+            volume = {}
+
+        return (nimble_volume_list)

@@ -1,0 +1,13 @@
+---
+name: "get-mongo-tasks-2-snow-rule"
+description: "Get HPE 3par tasks from mongo and send to snow."
+enabled: false
+
+trigger:
+  type: "core.st2.IntervalTimer"
+  parameters:
+    delta: 5
+    unit: minutes
+
+action:
+  ref: "hpe3par.get-mongo-tasks-2-snow"

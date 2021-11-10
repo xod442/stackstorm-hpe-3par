@@ -1,0 +1,6 @@
+---
+name: get-mongo-tasks-2-snow
+description: A workflow for getting hpe 3par tasks from mongo database to servicenow.
+runner_type: orquesta
+entry_point: workflows/get-mongo-tasks-2-snow.yaml
+enabled: true

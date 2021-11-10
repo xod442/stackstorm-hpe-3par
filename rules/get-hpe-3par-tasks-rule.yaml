@@ -1,0 +1,13 @@
+---
+name: "get-hpe-3par-volumes-rule"
+description: "Get HPE 3par volumes and load mongo database."
+enabled: false
+
+trigger:
+  type: "core.st2.IntervalTimer"
+  parameters:
+    delta: 5
+    unit: minutes
+
+action:
+  ref: "hpe3par.get-hpe-3par-tasks"
