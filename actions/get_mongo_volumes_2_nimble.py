@@ -30,7 +30,7 @@ class loadDb(MongoBaseAction):
         mydb = self.dbclient["app_db"]
         known = mydb["volz3par"]
 
-        list_to_process = []
+        nimble_volume_list = []
 
         myquery = { "u_nimble_process" : 'no' }
         records = known.find(myquery)
@@ -45,7 +45,7 @@ class loadDb(MongoBaseAction):
             volume['name'] = r['u_name']
             volume['size'] = r['u_sizeMiB']
             volume['limit_iops'] = limit_iops
-            list_to_process.append(r)
+            nimble_volume_list.append(r)
             volume = {}
 
-        return (list_to_process)
+        return (nimble_volume_list)

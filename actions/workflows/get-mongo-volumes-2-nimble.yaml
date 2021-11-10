@@ -19,4 +19,4 @@ tasks:
         do: processnimble
 
   processnimble:
-    action: hpenimble.process_nimble_volumes volumes=<% ctx().volumesß %>
+    action: hpe3par.process_nimble_volumes volumes=<% ctx().volumes %>
