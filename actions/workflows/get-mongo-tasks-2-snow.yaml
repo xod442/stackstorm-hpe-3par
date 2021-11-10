@@ -4,19 +4,19 @@ description: A workflow to copy hpe 3par tasks from mongo and into snow.
 
 tasks:
   getalerts:
-    action: hpenimble.get_mongo_volumes_2_nimble
+    action: hpe3par.get_mongo_tasks_2_snow
     next:
       - when: <% succeeded() %>
         publish:
-          - volumes: <% result().result %>
-        do: nimble
+          - tasks: <% result().result %>
+        do: snow
 
-  nimble:
-    with: <% ctx().volumes %>
-    action: hpenimble.post_volume payload='<% item() %>'
+  snow:
+    with: <% ctx().tasks %>
+    action: servicenow.create_record table="u_3par_tasks" payload='<% item() %>'
     next:
       - when: <% succeeded() %>
-        do: processnimble
+        do: processtasks
 
-  processnimble:
-    action: hpe3par.process_nimble_volumes volumes=<% ctx().volumes %>
+  processtasks:
+    action: hpe3par.process_3par_tasks tasks=<% ctx().tasks %>

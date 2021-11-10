@@ -24,28 +24,28 @@ import pymongo
 from lib.actions import MongoBaseAction
 
 
-class loadDb(MongoBaseAction):
+class getDb(MongoBaseAction):
     def run(self):
 
         mydb = self.dbclient["app_db"]
-        known = mydb["volz3par"]
+        known = mydb["tasks3par"]
 
-        nimble_volume_list = []
+        task_list = []
 
-        myquery = { "u_nimble_process" : 'no' }
+        myquery = { "u_snow_process" : 'no' }
         records = known.find(myquery)
 
-        limit_iops = 12000
-
-        volume = {}
+        task = {}
 
         for r in records:
             # TODO add records processing
-            if r['u_name'] != 'admin' and '.srdata':
-            volume['name'] = r['u_name']
-            volume['size'] = r['u_sizeMiB']
-            volume['limit_iops'] = limit_iops
-            nimble_volume_list.append(r)
-            volume = {}
+            new_task['u_id']=r['id']
+            new_task['u_name']=r['name']
+            new_task['u_finishTime']=r['finishTime']
+            new_task['u_startTime']=r['startTime']
+            new_task['u_status']=r['status']
+            new_task['u_type']=r['type']
+            new_task['u_user']=r['user']
+            tak_list.append(new_task)
 
-        return (nimble_volume_list)
+        return (task_list)

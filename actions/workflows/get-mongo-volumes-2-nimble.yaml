@@ -4,7 +4,7 @@ description: A workflow to copy hpe Nimble alarms from mongo and into snow.
 
 tasks:
   getalerts:
-    action: hpenimble.get_mongo_volumes_2_nimble
+    action: hpe3par.get_mongo_volumes_2_nimble
     next:
       - when: <% succeeded() %>
         publish:

@@ -33,7 +33,7 @@ class loadDb(MongoBaseAction):
         new_task={}
 
         for t in tasks:
-            myquery = { "u_id" : t['uuid'] }
+            myquery = { "u_id" : t['id'] }
             records = known.find(myquery).count()
             if records == 0:
                 new_task['u_snow_process']='no'
