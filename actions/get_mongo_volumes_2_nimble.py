@@ -24,7 +24,7 @@ import pymongo
 from lib.actions import MongoBaseAction
 
 
-class loadDb(MongoBaseAction):
+class fetchDb(MongoBaseAction):
     def run(self):
 
         mydb = self.dbclient["app_db"]
@@ -41,7 +41,7 @@ class loadDb(MongoBaseAction):
 
         for r in records:
             # TODO add records processing
-            if r['u_name'] != 'admin' and '.srdata':
+            if r['u_name'] != 'admin' and r['u_name'] != '.srdata':
                 volume['name'] = r['u_name']
                 volume['size'] = r['u_sizeMiB']
                 volume['limit_iops'] = limit_iops
