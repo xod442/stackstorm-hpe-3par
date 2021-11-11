@@ -45,7 +45,7 @@ class fetchDb(MongoBaseAction):
                 volume['name'] = r['u_name']
                 volume['size'] = r['u_sizeMiB']
                 volume['limit_iops'] = limit_iops
-                nimble_volume_list.append(r)
+                nimble_volume_list.append(volume)
                 volume = {}
 
         return (nimble_volume_list)
