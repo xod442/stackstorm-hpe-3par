@@ -1,5 +1,5 @@
 ---
-name: "get-hpe-3par-volumes-rule"
+name: "get-hpe-3par-tasks-rule"
 description: "Get HPE 3par volumes and load mongo database."
 enabled: false
 
