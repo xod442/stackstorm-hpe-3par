@@ -13,8 +13,8 @@ tasks:
 
   nimble:
     with: <% ctx().volumes %>
-    action: hpenimble.post_volume name='<% item(name) %>' size='<% item(size) %>' limit_iops ='<% item(limit_iops) %>'
-    
+    action: hpenimble.post_volume name='<% item(name) %>' size='<% item(size) %>'
+
     next:
       - when: <% succeeded() %>
         do: processnimble
