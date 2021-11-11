@@ -6,6 +6,6 @@ runner_type: python-script
 entry_point: process_3par_tasks.py
 enabled: true
 parameters:
-  nimble_volume_list:
+  tasks:
     required: true
     type: array

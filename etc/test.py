@@ -27,16 +27,18 @@ print(cpgName)
 
 cl = client.HPE3ParClient("https://10.132.0.40:8080/api/v1")
 
-cl.login("apiaccess", "siesta3")
+cl.login("apiaccess", "siesta123")
 
 #cl.createVolume(testVolName, testCPGName, 2048, "foo")
 
-volumes = cl.getVolumes()
+#volumes = cl.getVolumes()
 #wsapi_version = cl.getWsApiVersion()
 #tasks = cl.getAllTasks()
+allTasks = cl.getAllTasks()
 
-volumes = volumes['members']
-
+allTasks = allTasks['members']
+print(allTasks)
+"""
 dbuser = "appUser"
 dbpass = 'passwordForAppUser'
 
@@ -64,7 +66,7 @@ for vol in volumes:
         # write_record = process.insert_one(alarm)
 
 
-"""
+
 for i in info:
     print(i['uuid'])
 

@@ -47,5 +47,6 @@ class getDb(MongoBaseAction):
             new_task['u_type']=r['u_type']
             new_task['u_user']=r['u_user']
             task_list.append(new_task)
+            new_task = {}
 
         return (task_list)

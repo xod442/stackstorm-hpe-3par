@@ -13,7 +13,7 @@ tasks:
 
   snow:
     with: <% ctx().tasks %>
-    action: servicenow.create_record table="u_3par_tasks" payload='<% item() %>'
+    action: servicenow.create_record table="u_aa_3par_tasks" payload='<% item() %>'
     next:
       - when: <% succeeded() %>
         do: processtasks

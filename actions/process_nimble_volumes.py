@@ -31,6 +31,6 @@ class loadDb(MongoBaseAction):
         known = mydb["volz3par"]
 
         for v in volumes:
-            known.update_one({"u_name":v['name']},{"$set":{"u_nimble_process":"yes"}})
+            known.update_one({"u_id":v['id']},{"$set":{"u_nimble_process":"yes"}})
 
         return ()

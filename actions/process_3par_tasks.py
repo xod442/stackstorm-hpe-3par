@@ -25,12 +25,12 @@ from lib.actions import MongoBaseAction
 
 
 class loadDb(MongoBaseAction):
-    def run(self, nimble_volume_list):
+    def run(self, tasks):
 
         mydb = self.dbclient["app_db"]
         known = mydb["tasks3par"]
 
         for v in nimble_volume_list:
-            known.updateOne({"name":v['name']},{"$set":{"u_snow_process":"yes"}})
+            known.update_one({"u_id":v['u_id']},{"$set":{"u_snow_process":"yes"}})
 
         return ()
