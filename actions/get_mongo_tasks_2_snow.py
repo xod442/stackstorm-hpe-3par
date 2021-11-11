@@ -35,17 +35,17 @@ class getDb(MongoBaseAction):
         myquery = { "u_snow_process" : 'no' }
         records = known.find(myquery)
 
-        task = {}
+        new_task = {}
 
         for r in records:
             # TODO add records processing
-            new_task['u_id']=r['id']
-            new_task['u_name']=r['name']
-            new_task['u_finishTime']=r['finishTime']
-            new_task['u_startTime']=r['startTime']
-            new_task['u_status']=r['status']
-            new_task['u_type']=r['type']
-            new_task['u_user']=r['user']
-            tak_list.append(new_task)
+            new_task['u_id']=r['u_id']
+            new_task['u_name']=r['u_name']
+            new_task['u_finishTime']=r['u_finishTime']
+            new_task['u_startTime']=r['u_startTime']
+            new_task['u_status']=r['u_status']
+            new_task['u_type']=r['u_type']
+            new_task['u_user']=r['u_user']
+            task_list.append(new_task)
 
         return (task_list)
